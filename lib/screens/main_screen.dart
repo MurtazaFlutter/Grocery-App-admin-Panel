@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_admin_panel/controllers/MenuController.dart';
+import 'package:grocery_admin_panel/controllers/menu_controller_provider.dart';
 import 'package:grocery_admin_panel/widgets/side_menu.dart';
 import 'package:provider/provider.dart';
 

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:grocery_admin_panel/screens/main_screen.dart';
 import 'package:provider/provider.dart';
 import 'consts/theme_data.dart';
-import 'controllers/MenuController.dart';
+import 'controllers/menu_controller_provider.dart';
 import 'inner_screens/add_prod.dart';
 import 'providers/dark_theme_provider.dart';
+import 'providers/image_picker_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +44,7 @@ class _MyAppState extends State<MyApp> {
             return themeChangeProvider;
           },
         ),
+        ChangeNotifierProvider(create: (_) => ImagePickerProvider())
       ],
       child: Consumer<DarkThemeProvider>(
         builder: (context, themeProvider, child) {

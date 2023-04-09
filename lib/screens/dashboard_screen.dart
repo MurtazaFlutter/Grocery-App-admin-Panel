@@ -7,7 +7,7 @@ import 'package:grocery_admin_panel/widgets/buttons.dart';
 import 'package:grocery_admin_panel/widgets/header.dart';
 import 'package:grocery_admin_panel/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
-import '../controllers/MenuController.dart';
+import '../controllers/menu_controller_provider.dart';
 import '../widgets/grid_products.dart';
 import '../widgets/orders_list.dart';
 

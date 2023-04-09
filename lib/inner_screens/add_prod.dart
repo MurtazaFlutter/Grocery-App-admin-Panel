@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grocery_admin_panel/services/utils.dart';
@@ -10,9 +7,9 @@ import 'package:grocery_admin_panel/widgets/header.dart';
 import 'package:grocery_admin_panel/widgets/side_menu.dart';
 import 'package:grocery_admin_panel/widgets/text_widget.dart';
 import 'package:iconly/iconly.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import '../controllers/MenuController.dart';
+import '../controllers/menu_controller_provider.dart';
+import '../providers/image_picker_provider.dart';
 import '../responsive.dart';
 
 class UploadProductForm extends StatefulWidget {
@@ -51,28 +48,14 @@ class _UploadProductFormState extends State<UploadProductForm> {
 
   @override
   Widget build(BuildContext context) {
-    File? imageFile;
-    Future<void> _pickImage() async {
-      if (!kIsWeb) {
-        final ImagePicker _imagePicker = ImagePicker();
-        XFile? image =
-            await _imagePicker.pickImage(source: ImageSource.gallery);
-        if (image != null) {
-          var selectedImage = File(image.path);
-          setState(() {
-            selectedImage = imageFile!;
-          });
-        }
-      }
-    }
-
-    final theme = Utils(context).getTheme;
+    final imagePickerProvider = Provider.of<ImagePickerProvider>(context);
     final color = Utils(context).color;
     final _scaffoldColor = Theme.of(context).scaffoldBackgroundColor;
     Size size = Utils(context).getScreenSize;
 
     var inputDecoration = InputDecoration(
       filled: true,
+      hintText: 'Enter product title',
       fillColor: _scaffoldColor,
       border: InputBorder.none,
       focusedBorder: OutlineInputBorder(
@@ -276,7 +259,9 @@ class _UploadProductFormState extends State<UploadProductForm> {
                                           ),
                                         ),
                                         TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            imagePickerProvider.pickImage();
+                                          },
                                           child: TextWidget(
                                             text: 'Update image',
                                             color: Colors.blue,

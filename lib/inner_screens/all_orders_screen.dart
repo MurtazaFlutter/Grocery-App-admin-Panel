@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_admin_panel/widgets/orders_list.dart';
 import 'package:provider/provider.dart';
-import '../controllers/MenuController.dart';
+import '../controllers/menu_controller_provider.dart';
 import '../responsive.dart';
 import '../services/utils.dart';
 import '../widgets/header.dart';
